@@ -28,49 +28,93 @@
             </div>
             
             <div class="row">
-
+                
                 <div class="col-4">
                     esta é uma coluna
                 </div>
-
+                
                 <div class="col-8">
                     esta é a segunda coluna
                 </div>
-
+                
             </div>
             
             
             
             <div class="row">
                 <div class="btn-group botoes col-12">
-                    <button type="button" class="btn-solid theme-primary ">Adicionar</button>
+                    <button type="button" class="btn-solid theme-primary " onclick="capturaFormulario()">Adicionar</button>
                     
-                    </div>
-                </div>
-            </form>
-            <br>
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th scope="col">#</th>
-                        <th scope="col">Nome</th>
-                        <th scope="col">Valor</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <!-- <tr>
-                        <th scope="row">1</th>
-                        <td>Mark</td>
-                        <td>Otto</td>
-                    </tr> -->
-                </tbody>
-            </table>
-            <br>
-            <div class="row">
-                <div class="text-end">
-                    Valor total: <span c></span>
                 </div>
             </div>
-        </main>
-    </body>
-    </html>
+        </form>
+        <br>
+        
+        
+        <table class="table">
+            <thead>
+           <tr>
+             <th scope="col" >ID</th>
+             <th scope="col" >nome</th>
+             <th scope="col" >Valor</th>
+             
+           </tr>
+           </thead>
+           <tbody id="conteudo-tabela">
+            <tr>
+             <td>1</td>
+             <td>HD</td>
+             <td>100</td>
+             
+           </tr>
+           </tbody>
+        </table>
+        <tfoot>
+
+          <tr>
+             <td> </td>
+             <td> </td>
+             <td>total:</td>
+             
+           </tr>
+
+
+
+        </tfoot>
+        <br>
+        <div class="row">
+            <div class="text-end">
+                Valor total: <span id="valorTotal">0.00</span>
+            </div>
+        </div>
+    </main>
+    <script>
+        function capturaFormulario() {
+            let nome = document.querySelector("#nome")
+            let valor = document.querySelector("#valor")  
+            let tbody = document.querySelector('#conteudo-tabela')
+            let produto = {
+                nome: nome.value,
+                valor: valor.value
+            }
+            
+           let tr = document.createElement('tr')
+           let tdID = document.createElement('td')
+            let tdNome = document.createElement('td')
+           let tdValor = document.createElement('td')
+
+
+           tdNome.textContent = produto.nome
+           tdValor.textContent = produto.valor
+
+
+           tr.append(tdID)
+           tr.append(tdNome)
+           tr.append(tdValor)
+
+           tbody.append(tr)
+            
+        }
+    </script>
+</body>
+</html>
